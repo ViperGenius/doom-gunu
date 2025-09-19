@@ -1,0 +1,101 @@
+<head>
+    <style>
+        body {
+            background-image: url("background.jpg");
+            background-size: contain;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: black;
+        }
+
+        * {
+        margin: 0;
+        padding: 0;
+        }
+
+        .container {
+            position: relative;
+            height: 100%;
+            height: 100%;
+        }
+
+        .top , .bottom{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .top {
+            top: 15px;
+        }
+
+        .bottom {
+            bottom: 15px;
+        }
+
+        .wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;          
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .start {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            scale: 300%;
+        }
+
+        .name {
+            scale: 0%;
+        }
+
+        .name.animate {
+            animation: mainText 6s ease-in 2s forwards;
+        }
+
+        @keyframes mainText {
+            0% {transform: rotate(0deg); scale: 0%;}
+            100% {transform: rotate(360deg); scale: 300%;}
+        }
+    </style>
+
+    
+    
+    <audio class="music" id="music" >
+        <source src="music.mp3">
+    </audio>
+</head>
+<body>
+    <div class="cover" id="cover" style="height: 100%; width: 100%; background-color: black; position: absolute; z-index: 1;">
+        <button class="start" id="start">!Patlat</button>
+    </div>
+    <div class="container" style="display: grid;">
+        <img src="top.gif"; class="top" >
+        <div class="wrapper">
+            <img src="name.gif"; class="name" id="name">
+        </div>
+        <img src="bottom.gif"; class="bottom">
+    </div>
+
+    <script>
+        const button = document.getElementById('start');
+        const myDiv = document.getElementById('cover');
+        const animBox = document.getElementById('name');
+        const audio = document.getElementById('music');
+
+        button.addEventListener('click', () => {
+  // Immediately hide the div
+        myDiv.style.display = 'none';
+
+  // Start the animation
+        animBox.classList.add('animate');
+
+  // Play the audio
+        audio.volume = 0.2;
+        audio.play();
+        });
+    </script>
+</body>
